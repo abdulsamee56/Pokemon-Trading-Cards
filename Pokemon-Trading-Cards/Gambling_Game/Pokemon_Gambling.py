@@ -85,8 +85,10 @@ class GUI:
         self.view_bag_button = tk.Button(self.root, text="View Bag", command=self.view_bag, font=("Helvetica", 14), bg="blue", fg="white")
         self.view_bag_button.place(relx=0.5, rely=0.4, anchor="center")
 
-
-
+        # Sell Entire Bag button
+        self.sell_bag_button = tk.Button(self.root, text="Sell Entire Bag", command=self.sell_entire_bag,
+                                         font=("Helvetica", 14), bg="red", fg="white")
+        self.sell_bag_button.place(relx=0.5, rely=0.5, anchor="center")
 
     def open_pack(self):
         if self.money >= 10:  # Example cost to open a pack
@@ -191,6 +193,12 @@ class GUI:
         # Return background color based on card name
         return card_colors.get(card_name, "white")  # Default to white if card name not found
 
+    def sell_entire_bag(self):
+        for card in self.collected_cards:
+            self.money += card.value
+        self.collected_cards.clear()  # Clear the bag after selling all cards
+        self.money_label.config(text=f"Money: ${self.money}")
+        messagebox.showinfo("Sold", "You sold the entire bag!")
     def view_bag(self):
         # Create a new window to display the collected cards for selling
         bag_window = tk.Toplevel(self.root)
