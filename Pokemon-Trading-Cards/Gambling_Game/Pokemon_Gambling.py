@@ -95,9 +95,6 @@ class GUI:
             self.money -= 10
             self.money_label.config(text=f"Money: ${self.money}")
 
-            # Check if the "Need Cash?" button should be shown
-
-
             # Randomly select a card based on probabilities
             card_name = self.get_random_card()
 
@@ -128,7 +125,7 @@ class GUI:
             aspect_ratio = image_width / image_height
             new_height = 300
             new_width = int(new_height * aspect_ratio)
-            image = image.resize((new_width, new_height), Image.ANTIALIAS)
+            image = image.resize((new_width, new_height), Image.LANCZOS)
 
             # Display card image
             card_image = ImageTk.PhotoImage(image)
@@ -146,8 +143,11 @@ class GUI:
                 if self.borrowed_turns >= 5:
                     self.show_dead_window()
 
+            # Check if the "Need Cash?" button should be shown
+            self.show_mafia_button()  # Add this line
+
         else:
-            messagebox.showerror("Error", "You don't have enough money to open a pack!")     
+            messagebox.showerror("Error", "You don't have enough money to open a pack!") 
 
     def get_random_card(self):
         # Define card probabilities (adjust as needed)
@@ -184,9 +184,9 @@ class GUI:
             "Infernape": "light salmon",
             "Fuecoco": "light salmon",
             "Squirtle": "light blue",
-            "Mr.Mime": "light purple",
+            "Mr.Mime": "MediumPurple",
             "Ditto": "light grey",
-            "Gengar": "light purple",
+            "Gengar": "MediumPurple",
             "Pikachu": "light yellow",
             "Buff Mosquito": "light salmon",
         }
@@ -242,7 +242,101 @@ class GUI:
         # Sell Card button
         sell_button = tk.Button(details_window, text="Sell Card", command=lambda c=card: self.sell_card(c, bag_window), font=("Helvetica", 14), bg="red", fg="white")
         sell_button.pack()
+    def show_dead_window(self):
+        # Close the main GUI window
+        self.root.destroy()
 
+        # Create a new window for the game over scenario
+        game_over_window = tk.Toplevel()
+        game_over_window.title("Game Over")
+        game_over_window.geometry("800x600")
+
+        # Load background image
+        dead_image = ImageTk.PhotoImage(Image.open("dead.png"))
+
+        # Set background image
+        dead_label = tk.Label(game_over_window, image=dead_image)
+        dead_label.image = dead_image  # Keep a reference to avoid garbage collection
+        dead_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+        # Add text message
+        message_label = tk.Label(game_over_window, text="The Mafia has found and attached 3 driftloons on your back, you probably shouldn't have taken a bribe...", font=("Helvetica", 14))
+        message_label.pack(pady=20)
+
+        # Add button to close the window
+        close_button = tk.Button(game_over_window, text="Hope you Land on Snorlax", command=game_over_window.destroy, font=("Helvetica", 14), bg="red", fg="white")
+        close_button.pack(pady=20)
+        
+    def show_mafia_button(self):
+        if self.money <= 5 and not self.borrowed_money:
+            if not hasattr(self, 'mafia_button') or self.mafia_button is None:
+                self.mafia_button = tk.Button(self.root, text="Need Cash?", command=self.alleyway_window, font=("Helvetica", 14), bg="red", fg="white")
+                self.mafia_button.place(relx=0.5, rely=0.6, anchor="center")
+        else:
+            if hasattr(self, 'mafia_button') and self.mafia_button is not None:
+                self.mafia_button.destroy()
+                self.mafia_button = None
+
+    def alleyway_window(self):
+        # Create a new window for the alleyway
+        alleyway_window = tk.Toplevel(self.root)
+        alleyway_window.title("Alleyway")
+        alleyway_window.geometry("400x300")  # Increased window size
+
+        # Set background color to grey
+        alleyway_window.configure(bg="grey")
+
+        # Set background image
+        alleyway_label = tk.Label(alleyway_window, image=self.alleyway_image)
+        alleyway_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+        # Text label
+        text_label = tk.Label(alleyway_window, text="You look like you could use some cash... \n Wanna Borrow 100?", font=("Helvetica", 14), bg="grey", fg="white")
+        text_label.pack(pady=20)
+
+        # Button to borrow money
+        borrow_button = tk.Button(alleyway_window, text="Borrow 200", command=lambda: self.borrow_money(alleyway_window), font=("Helvetica", 12), bg="green", fg="white")
+        borrow_button.pack()
+
+        # Button to dismiss the alleyway window
+        dismiss_button = tk.Button(alleyway_window, text="Caw Caw Caw, chicken", command=lambda: self.dismiss_alleyway_window(alleyway_window), font=("Helvetica", 12), bg="red", fg="white")
+        dismiss_button.pack()
+
+    def show_pay_back_button(self):
+        # Show "Pay the Mafia Back" button if the user has borrowed money
+        self.borrowed_money = True
+        if self.money >= 200:  # Adjusted to check for 200 dollars
+            self.pay_back_button = tk.Button(self.root, text="Pay Back 200 to the Mafia", command=self.pay_back_money, font=("Helvetica", 14), bg="orange", fg="white")  # Updated text
+            self.pay_back_button.pack(side=tk.BOTTOM, pady=10)
+
+    def borrow_money(self, window):
+        # Close the alleyway window
+        window.destroy()
+
+        # Give the user 200 dollars instead of 100
+        self.money += 200  # Updated to give 200 dollars
+        self.money_label.config(text=f"Money: ${self.money}")
+
+        # Show "Pay the Mafia Back" button
+        self.show_pay_back_button()
+
+        # Reset borrowed turns counter
+        self.borrowed_turns = 0
+
+    def pay_back_money(self):
+        # Deduct the borrowed money (200 instead of 100)
+        self.money -= 200  # Updated to deduct 200 dollars
+        self.money_label.config(text=f"Money: ${self.money}")
+
+        # Destroy "Pay the Mafia Back" button
+        self.pay_back_button.destroy()
+
+        # Reset borrowed money status
+        self.borrowed_money = False
+
+    def dismiss_alleyway_window(self, window):
+        # Close the alleyway window
+        window.destroy()
 
 
     def run(self):
@@ -250,4 +344,3 @@ class GUI:
 
 gui = GUI()
 gui.run()
-
