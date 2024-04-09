@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    background-image: url('../pic/background/backgroundpc.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgb(236, 234, 234);
+    height: 65px;
+}
+
+header img {
+    max-height: 150px;
+    margin-right: 0px;
+    margin-top: 0px;
+}
+
+.title_option_box {
+    display: flex;
+}
+
+.title {
+    width: 150px;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 8px;
+    border: 2px unset rgb(204, 206, 207);
+    background-color: rgb(198, 200, 202);
+    font-family: "Arial", sans-serif;
+    color: rgb(111, 111, 111);
+    text-align: center;
+}
+
+.title:hover {
+    background-color: rgb(162, 162, 162);
+    cursor: pointer;
+}
+
+.title a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.project-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px; 
+}
+
+.project-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.download-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; 
+    margin-bottom: 20px;
+}
+
+.download {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(0, 123, 255); 
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.download:hover {
+    background-color: rgb(0, 86, 179); 
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: rgb(111, 111, 111);
+    background-color: rgb(255, 255, 255);
+    border-top: 2px solid rgb(110, 111, 112);
+    padding-bottom: 4px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%;
+}
+
+.contact img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.contact p {
+    margin-left: 5px;
+    margin-bottom: 5px; 
+    align-items: center;
+}
+
+.contact div {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; 
+}
+

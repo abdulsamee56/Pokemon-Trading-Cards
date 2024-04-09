@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSC 4010 Group Project one</title>
+    <!-- Link to your project2.css file -->
+    <link rel="stylesheet" type="text/css" href="../project2/project2.css">
+
+    <style>
+        /* Add some margin to the top left text and a small gap between buttons */
+        .forestview-text {
+            font-size: 24px;
+            /* Adjust the font size */
+            font-weight: bold;
+            /* Make it bold */
+            color: #333;
+            /* Dark gray color */
+            text-decoration: none;
+            /* Remove underline */
+            display: inline-block;
+            /* Prevent line break */
+            margin-right: 20px;
+            /* Add some spacing to the right */
+        }
+
+        .title_option_box {
+            margin-top: 10px;
+        }
+
+        .download-link-container {
+            margin-top: 10px;
+        }
+
+        .pokemon-hero {
+            text-align: center;
+        }
+
+        .battle-section {
+            text-align: center;
+            margin: 20px;
+            background-color: #FFD1D1; /* Light red background */
+            color: #682626; /* Complimentary font color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .battle-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .team-selection,
+        .battle-section,
+        .pokemon-info {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- rain -->
+    <div id="raindrop-container"></div>
+    <script src="../project2/rain.js"></script>
+    <header>
+        <!-- logo pic -->
+        <img src="../pic/logo/Forestview.png" alt="Company Logo">
+        <!-- title option box -->
+        <div class="title_option_box">
+            <div class="title"><a href="../homepage/home_page.html">Home page</a></div>
+            <div class="title"><a href="...com">Project 1</a></div>
+            <div class="title"><a href="...com">Project 2</a></div>
+            <div class="title"><a href="...com">Project 3</a></div>
+            <div class="title"><a href="...com">Project 4</a></div>
+        </div>
+    </header>
+
+    <!-- Full-width hero image for Pokemon Showdown app with slightly shorter height -->
+    <div class="pokemon-hero">
+        <img src="../pic/project2pic/poke-hero.png" alt="Pokemon Hero Image" style="width: 100%; height: 80vh;">
+    </div>
+
+    <!-- Battle Section -->
+<div class="battle-section">
+    
+    <img src="../pic/project2pic/electivire-infernape.gif" alt="Battle GIF">
+
+    <!-- Container for Battle Cards -->
+    <div class="battle-cards">
+        <!-- User's Card -->
+        <div class="battle-card">
+            <a href="https://drive.google.com/file/d/1qLut29TzG79tokWsqkU588j_JTw_Xh0-/view?usp=sharing" target="_blank"><h3>Download App</h3></a>
+            
+            <!-- Add any additional styling or content for the user's card -->
+        </div>
+
+        <!-- AI's Card -->
+        <div class="battle-card">
+            <a href="https://github.com/abdulsamee56/Pokemon-Showdown" target="_blank"><h3>Github</h3></a>
+            
+            <!-- Add any additional styling or content for the AI's card -->
+        </div>
+    </div>
+
+    <!-- Add background image -->
+    <style>
+        .battle-section {
+            background: url('../pic/project2pic/playerbattle.jpg') center center/cover no-repeat;
+            color: #fff; /* Set font color to white for better visibility */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</div>
+  
+
+
+
+    <footer>
+        <!-- contact infor -->
+        <div class="contact">
+            <!-- pic -->
+            <img src="../pic/mediapc/icons8-email.gif" alt="Email GIF">
+            <p>hl0186@wayne.edu</p>
+            <img src="../pic/mediapc/phonecall.gif" alt="Phone GIF">
+            <p>+12xxxxxxx58</p>
+            <p>Date: 2024 / 01 / 28</p>
+            <p>&copy; 2024 FORESTVIEW </p>
+        </div>
+    </footer>
+</body>
+
+</html>

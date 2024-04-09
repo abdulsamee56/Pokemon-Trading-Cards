@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    background-image: url('../pic/background/backgroundpc.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgb(236, 234, 234);
+    height: 65px;
+}
+
+header img {
+    max-height: 150px;
+    margin-right: 0px;
+    margin-top: 0px;
+}
+
+.title_option_box {
+    display: flex;
+}
+
+.title {
+    width: 150px;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 8px;
+    border: 2px unset rgb(204, 206, 207);
+    background-color: rgb(198, 200, 202);
+    font-family: "Arial", sans-serif;
+    color: rgb(111, 111, 111);
+    text-align: center;
+}
+
+.title:hover {
+    background-color: rgb(162, 162, 162);
+    cursor: pointer;
+}
+
+.title a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+section {
+    text-align: center;
+}
+
+
+.team_introduce {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+h1 {
+    font-size: 36px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: rgb(0, 0, 0);
+    font-size: 21px;
+    max-width: 70%;
+    margin: 0 auto 20px;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+
+.team_member {
+    width: 22%; 
+    margin-bottom: 20px;
+}
+
+.team_member img {
+    width: 100%;
+    height: 400px; 
+    object-fit: cover; 
+    border-radius: 50%;
+}
+
+
+.team_member p {
+    margin-top: 10px;
+    word-wrap: break-word;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: rgb(111, 111, 111);
+    background-color: rgb(255, 255, 255);
+    border-top: 2px solid rgb(110, 111, 112);
+    padding-bottom: 4px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%;
+}
+
+.contact img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.contact p {
+    margin-left: 5px;
+    margin-bottom: 5px; 
+    align-items: center;
+}
+
+.contact div {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
